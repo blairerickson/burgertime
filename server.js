@@ -33,18 +33,13 @@ app.get("/", function(req, res) {
     if (err) {
       throw err;
     }
-
-    res.render("index", { burgers: data });
-
-  });
-
-  connection.query("SELECT * FROM burgers WHERE devoured = 1;", function(err, data) {
+    connection.query("SELECT * FROM burgers WHERE devoured = '1';", function(err, eat) {
     if (err) {
       throw err;
     }
-    console.log("devoured list here " + data);
-    res.render("index", { eaten: data });
-
+    console.log("devoured list here " + eat);
+    res.render("index", { eaten: eat , burgers: data});
+  });
   });
 
 });
