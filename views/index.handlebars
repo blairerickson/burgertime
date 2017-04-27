@@ -1,6 +1,8 @@
+
 <h1>Burger Time</h1>
 
 <ul>
+  <h3>Waiting to be eaten</h3>
   {{#each burgers}}
     <li>
       <p>
@@ -15,9 +17,19 @@
   {{/each}}
 </ul>
 
-<h2>Add a Burger Ingredient</h2>
+<h2>Add a Burger </h2>
 <form method="POST" action="/" class="button-size">
 	<textarea type="text" name="burger_name"></textarea>
 	<button type="submit">Save burger_name!</button>
 </form>
 
+
+<ul><h3>Burgers Devoured</h3>
+  {{#each eaten}}
+    <li>
+      <p>
+        {{this.id}}. {{this.burger_name}}
+      </p>
+    </li>
+  {{/each}}
+</ul>

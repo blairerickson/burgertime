@@ -29,7 +29,7 @@ var mysql = require("mysql");
 
 
 app.get("/", function(req, res) {
-  connection.query("SELECT * FROM burgers;", function(err, data) {
+  connection.query("SELECT * FROM burgers WHERE devoured = 0;", function(err, data) {
     if (err) {
       throw err;
     }
@@ -37,6 +37,16 @@ app.get("/", function(req, res) {
     res.render("index", { burgers: data });
 
   });
+
+  connection.query("SELECT * FROM burgers WHERE devoured = 1;", function(err, data) {
+    if (err) {
+      throw err;
+    }
+    console.log("devoured list here " + data);
+    res.render("index", { eaten: data });
+
+  });
+
 });
 
 app.post("/", function(req, res) {
