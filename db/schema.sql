@@ -1,3 +1,12 @@
+CREATE SCHEMA `burgers_db` ;
+
+CREATE TABLE `burgers_db`.`burgers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `burger_name` VARCHAR(145) NOT NULL,
+  `devoured` TINYINT NOT NULL,
+  `date` TIMESTAMP() NULL,
+  PRIMARY KEY (`id`));
+
 /*
 -- Query: SELECT * FROM burgers_db.burgers
 LIMIT 0, 1000
