@@ -40,7 +40,7 @@ app.get("/", function(req, res) {
 });
 
 app.post("/", function(req, res) {
-  connection.query("INSERT INTO burgers (movie) VALUES (?)", [req.body.movie], function(err, result) {
+  connection.query("INSERT INTO burgers (burger_name) VALUES (?)", [req.body.burger_name], function(err, result) {
     if (err) {
       throw err;
     }
@@ -48,8 +48,8 @@ app.post("/", function(req, res) {
   });
 });
 
-app.delete("/:id", function(req, res) {
-  connection.query("DELETE FROM burgers WHERE id = ?", [req.params.id], function(err, result) {
+app.put("/:id", function(req, res) {
+  connection.query("UPDATE burgers SET devoured = 1 WHERE id = ?", [req.params.id], function(err, result) {
     if (err) {
       throw err;
     }
@@ -57,16 +57,5 @@ app.delete("/:id", function(req, res) {
   });
 });
 
-app.put("/", function(req, res) {
-
-  connection.query("UPDATE burgers SET movie = ? WHERE id = ?", [
-    req.body.movie, req.body.id
-  ], function(err, result) {
-    if (err) {
-      throw err;
-    }
-    res.redirect("/");
-  });
-});
 
 app.listen(port);
